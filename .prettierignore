@@ -1,0 +1,7 @@
+# Ignore all minified files
+*.min.*
+
+# Common minified patterns
+**/*.min.js
+**/*.min.css
+**/*.min.html 

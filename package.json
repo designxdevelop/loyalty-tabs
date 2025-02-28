@@ -1,0 +1,12 @@
+{
+  "name": "loyalty-tabs",
+  "version": "1.0.0",
+  "description": "Loyalty tabs component with auto-minification",
+  "scripts": {
+    "watch": "bun run minify.js",
+    "minify": "bun run minify.js"
+  },
+  "dependencies": {
+    "html-minifier": "^4.0.0"
+  }
+}
