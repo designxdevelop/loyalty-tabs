@@ -11,7 +11,6 @@
     width: 100%;
     padding: 0 1.75rem;
   }
-
   .l7-loyalty-tab {
     background: #fcfbfc;
     border-radius: 1rem;
@@ -22,53 +21,49 @@
     align-items: center;
     gap: 0.88719rem;
     cursor: pointer;
-    transition: all 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
+    transition: all 0.3s cubic-bezier(0.64, 0.04, 0.35, 1);
     border: 0.0625rem solid #e8e8e8;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 transparent;
     transform: translateX(0);
   }
-
   .l7-loyalty-tab-number {
     color: #c09a11;
     font-weight: 500;
     font-size: 1rem;
-    transition: font-size 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
+    transition: font-size 0.3s cubic-bezier(0.64, 0.04, 0.35, 1);
     flex: 0 0 auto;
     line-height: 1.4;
   }
-
   .l7-loyalty-tab-title-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
   }
-
   .l7-loyalty-tab-title {
     margin: 0;
     font-size: 1rem;
     font-weight: 500;
     color: #0f3239;
     line-height: 1.4;
-    transition: font-size 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
+    transition: font-size 0.3s cubic-bezier(0.64, 0.04, 0.35, 1);
   }
-
   .l7-loyalty-tab-content {
     max-height: 0;
     opacity: 0;
     transform: translateY(-0.5rem);
-    transition: all 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
+    transition: all 0.3s cubic-bezier(0.64, 0.04, 0.35, 1);
     color: #607074;
     font-size: 1.125rem;
     pointer-events: none;
     line-height: 1.5;
     padding: 0;
-    margin-top: 0.5rem;
+    margin: 0;
+    visibility: hidden;
   }
-
   .l7-loyalty-tab.active {
     border-radius: 1rem;
     border: 0.08rem solid #e8e8e8;
@@ -78,133 +73,109 @@
     width: calc(100% + 3.5rem);
     max-width: 31.125rem;
     padding: 1.625rem 1.9375rem 1.375rem 1.9375rem;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.82363rem;
     margin-left: -1.75rem;
     z-index: 1;
     transform: translateX(0);
   }
-
   .l7-loyalty-tab.active .l7-loyalty-tab-content {
     max-height: 12.5rem;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+    margin-top: 0.5rem;
+    visibility: visible;
   }
-
   .l7-loyalty-tab.active .l7-loyalty-tab-number,
   .l7-loyalty-tab.active .l7-loyalty-tab-title {
     font-size: 1.45rem;
   }
-
+  .l7-loyalty-tab.active .l7-loyalty-tab-title-wrapper {
+    padding-top: 0.25rem;
+  }
+  .l7-loyalty-tab.active .l7-loyalty-tab-number {
+    padding-top: 0.25rem;
+  }
   .l7-loyalty-tab p {
     margin: 0;
   }
-
-  /* Tablet Breakpoint */
   @media screen and (max-width: 61.9375rem) {
     .l7-loyalty-tabs {
       max-width: 28.53313rem;
     }
-
     .l7-loyalty-tab {
       max-width: 26rem;
     }
-
     .l7-loyalty-tab.active {
       max-width: 28.53313rem;
     }
   }
-
-  /* Mobile Landscape Breakpoint */
   @media screen and (max-width: 47.9375rem) {
     .l7-loyalty-tabs {
       max-width: 100%;
       padding: 0 1.25rem;
     }
-
     .l7-loyalty-tab {
       max-width: 100%;
       padding: 1rem 1.5rem 0.75rem 1.5rem;
     }
-
     .l7-loyalty-tab.active {
       margin-left: -1.25rem;
       width: calc(100% + 2.5rem);
       max-width: none;
       padding: 1.625rem 1.9375rem 1.375rem 1.9375rem;
     }
-
     .l7-loyalty-tab-content {
       margin-left: 2.3rem;
     }
-
     .l7-loyalty-tab.active .l7-loyalty-tab-content {
       margin-left: 2.6rem;
     }
   }
-
-  /* Mobile Portrait Breakpoint */
   @media screen and (max-width: 29.8125rem) {
     .l7-loyalty-tab-number,
     .l7-loyalty-tab-title {
       font-size: 0.95rem;
     }
-
     .l7-loyalty-tab.active .l7-loyalty-tab-number,
     .l7-loyalty-tab.active .l7-loyalty-tab-title {
       font-size: 1.25rem;
     }
-
     .l7-loyalty-tab-content {
       font-size: 1rem;
     }
   }
 </style>
-
 <div class="l7-loyalty-tabs">
   <div class="l7-loyalty-tab active" data-tab="1">
     <span class="l7-loyalty-tab-number">01.</span>
     <div class="l7-loyalty-tab-title-wrapper">
       <h3 class="l7-loyalty-tab-title">Start with a 1% discount</h3>
-      <div class="l7-loyalty-tab-content">
-        <p>when Onramp is your sole lender (applies on your second loan).</p>
-      </div>
+      <div class="l7-loyalty-tab-content"><p>when Onramp is your sole lender (applies on your second loan).</p></div>
     </div>
   </div>
-
   <div class="l7-loyalty-tab" data-tab="2">
     <span class="l7-loyalty-tab-number">02.</span>
     <div class="l7-loyalty-tab-title-wrapper">
       <h3 class="l7-loyalty-tab-title">Earn an additional 1% discount</h3>
-      <div class="l7-loyalty-tab-content">
-        <p>after completing three loans (including rollovers) with no payment issues.</p>
-      </div>
+      <div class="l7-loyalty-tab-content"><p>after completing three loans (including rollovers) with no payment issues.</p></div>
     </div>
   </div>
-
   <div class="l7-loyalty-tab" data-tab="3">
     <span class="l7-loyalty-tab-number">03.</span>
     <div class="l7-loyalty-tab-title-wrapper">
       <h3 class="l7-loyalty-tab-title">Unlock a final 1% discount</h3>
-      <div class="l7-loyalty-tab-content">
-        <p>by completing six loans (or rollovers) without payment issues.</p>
-      </div>
+      <div class="l7-loyalty-tab-content"><p>by completing six loans (or rollovers) without payment issues.</p></div>
     </div>
   </div>
 </div>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const tabs = document.querySelectorAll(".l7-loyalty-tab");
-
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", function () {
-        // Remove active class from all tabs
-        tabs.forEach((t) => t.classList.remove("active"));
-
-        // Add active class to clicked tab
-        this.classList.add("active");
+    let e = document.querySelectorAll(".l7-loyalty-tab");
+    e.forEach((t) => {
+      t.addEventListener("click", function () {
+        e.forEach((t) => t.classList.remove("active")), this.classList.add("active");
       });
     });
   });
