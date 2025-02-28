@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<style>
+  .loyalty-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: "PP Mori", sans-serif;
+    position: relative;
+  }
+
+  .loyalty-tab {
+    background: white;
+    border-radius: 1rem;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .loyalty-tab-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .loyalty-tab-number {
+    color: #f0a500;
+    font-weight: 500;
+    font-size: 1rem;
+    flex-shrink: 0;
+    width: 32px;
+  }
+
+  .loyalty-tab-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .loyalty-tab-content {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #666;
+    font-size: 0.9rem;
+    margin-left: 40px;
+    pointer-events: none;
+    line-height: 1.5;
+    padding: 0;
+  }
+
+  .loyalty-tab.active {
+    border-radius: 1.25rem;
+    border: 1.29px solid #e8e8e8;
+    background: #fff;
+    box-shadow: 0px 3px 15px 2px rgba(0, 0, 0, 0.02);
+    padding: 20px 24px;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    z-index: 1;
+  }
+
+  .loyalty-tab.active .loyalty-tab-content {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 8px;
+    pointer-events: auto;
+  }
+
+  .loyalty-tab p {
+    margin: 0;
+  }
+</style>
+
+<div class="loyalty-tabs">
+  <div class="loyalty-tab active" data-tab="1">
+    <div class="loyalty-tab-header">
+      <span class="loyalty-tab-number">01.</span>
+      <h3 class="loyalty-tab-title">Start with a 1% discount</h3>
+    </div>
+    <div class="loyalty-tab-content">
+      <p>when Onramp is your sole lender (applies on your second loan).</p>
+    </div>
+  </div>
+
+  <div class="loyalty-tab" data-tab="2">
+    <div class="loyalty-tab-header">
+      <span class="loyalty-tab-number">02.</span>
+      <h3 class="loyalty-tab-title">Earn an additional 1% discount</h3>
+    </div>
+    <div class="loyalty-tab-content">
+      <p>Complete additional requirements to earn more savings.</p>
+    </div>
+  </div>
+
+  <div class="loyalty-tab" data-tab="3">
+    <div class="loyalty-tab-header">
+      <span class="loyalty-tab-number">03.</span>
+      <h3 class="loyalty-tab-title">Unlock a final 1% discount</h3>
+    </div>
+    <div class="loyalty-tab-content">
+      <p>Maximize your savings with our loyalty program.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".loyalty-tab");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        // Remove active class from all tabs
+        tabs.forEach((t) => t.classList.remove("active"));
+
+        // Add active class to clicked tab
+        this.classList.add("active");
+      });
+    });
+  });
+</script>
