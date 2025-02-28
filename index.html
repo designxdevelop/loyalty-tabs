@@ -66,10 +66,29 @@
           const activeTitle = activeTab.querySelector(".stack-tab-title.active");
           const activeContent = activeTab.querySelector(".stack-tab-content.active");
 
+          // Store the current computed styles before removing classes
+          // This prevents the sudden jump by capturing the current state
+          const contentRect = activeContent.getBoundingClientRect();
+          const contentComputedStyle = window.getComputedStyle(activeContent);
+          const titleRowComputedStyle = window.getComputedStyle(activeTitleRow);
+
           // Create a timeline for smooth animation
           const tlOut = gsap.timeline();
 
-          // Animate out the active content
+          // First, animate to the current computed values to ensure continuity
+          tlOut.set(activeContent, {
+            height: contentRect.height,
+            paddingLeft: contentComputedStyle.paddingLeft,
+            fontSize: contentComputedStyle.fontSize,
+            marginTop: contentComputedStyle.marginTop,
+            opacity: contentComputedStyle.opacity,
+          });
+
+          tlOut.set(activeTitleRow, {
+            marginLeft: titleRowComputedStyle.marginLeft,
+          });
+
+          // Now animate out the active content
           tlOut.to(activeContent, {
             opacity: 0,
             height: 0,
@@ -102,43 +121,47 @@
         }
 
         // Activate the clicked tab with animation
-        // First add active classes
-        tab.classList.add("active");
-
         const tabTitleRow = tab.querySelector(".stack-tab-title-row");
         const tabNum = tab.querySelector(".stack-tab-num");
         const tabTitle = tab.querySelector(".stack-tab-title");
         const tabContent = tab.querySelector(".stack-tab-content");
 
-        tabTitleRow.classList.add("active");
-        tabNum.classList.add("active");
-        tabTitle.classList.add("active");
-        tabContent.classList.add("active");
-
         // Create animation timeline for the new active tab
         const tlIn = gsap.timeline();
 
+        // Set initial state before adding active classes
+        // This prevents any sudden jumps when classes are added
+        tlIn.set(tabContent, {
+          opacity: 0,
+          height: 0,
+          paddingLeft: "2.5rem",
+          fontSize: "1.12rem",
+          marginTop: 0,
+        });
+
+        tlIn.set(tabTitleRow, {
+          marginLeft: 0,
+        });
+
+        // Add active classes after setting initial state
+        tlIn.call(() => {
+          tab.classList.add("active");
+          tabTitleRow.classList.add("active");
+          tabNum.classList.add("active");
+          tabTitle.classList.add("active");
+          tabContent.classList.add("active");
+        });
+
         // Animate the title row
-        tlIn.fromTo(
-          tabTitleRow,
-          { marginLeft: 0 },
-          {
-            marginLeft: "-0.25rem",
-            duration: animConfig.duration * 0.8,
-            ease: animConfig.ease,
-          }
-        );
+        tlIn.to(tabTitleRow, {
+          marginLeft: "-0.25rem",
+          duration: animConfig.duration * 0.8,
+          ease: animConfig.ease,
+        });
 
         // Animate in the content
-        tlIn.fromTo(
+        tlIn.to(
           tabContent,
-          {
-            opacity: 0,
-            height: 0,
-            paddingLeft: "2.5rem",
-            fontSize: "1.12rem",
-            marginTop: 0,
-          },
           {
             opacity: 1,
             height: "auto",
