@@ -3,6 +3,7 @@ const { watch } = require("fs");
 
 const sourceFile = "loyalty-tabs.html";
 const minifiedFile = "loyalty-tabs.min.html";
+const repoComment = "<!-- repo/dev version of Loyalty Tabs: https://github.com/designxdevelop/loyalty-tabs -->\n";
 
 const minifyOptions = {
   collapseWhitespace: true,
@@ -22,7 +23,7 @@ async function minifyFile() {
   try {
     const content = await Bun.file(sourceFile).text();
     const minified = minify(content, minifyOptions);
-    await Bun.write(minifiedFile, minified);
+    await Bun.write(minifiedFile, repoComment + minified);
     console.log(`✨ Minified ${sourceFile} -> ${minifiedFile}`);
   } catch (err) {
     console.error("Error during minification:", err);
