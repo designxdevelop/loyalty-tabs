@@ -1,0 +1,26 @@
+.stack-tab-title-row.stack-tab-title {
+  grid-column-gap: 0.75rem;
+  grid-row-gap: 0.75rem;
+}
+
+.stack-tab-title-row.active {
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  margin-left: -0.25rem;
+}
+
+.stack-tab-content {
+  opacity: 0;
+  color: #607074;
+  height: 0;
+  padding-left: 2.5rem;
+  font-size: 1.12rem;
+}
+
+.stack-tab-content.active {
+  opacity: 100;
+  height: auto;
+  margin-top: 0.75rem;
+  padding-left: 0;
+  font-size: 1.25rem;
+}
