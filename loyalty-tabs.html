@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-width: 27rem;
+    max-width: 31.125rem;
     margin: 0 auto;
     font-family: "PP Mori", sans-serif;
     position: relative;
@@ -15,24 +15,20 @@
   .l7-loyalty-tab {
     background: #fcfbfc;
     border-radius: 1rem;
+    display: flex;
+    width: 100%;
+    max-width: 28.53313rem;
     padding: 1rem 1.5rem;
+    align-items: baseline;
+    gap: 0.88719rem;
     cursor: pointer;
     transition: all 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
     border: 0.0625rem solid #e8e8e8;
     overflow: hidden;
     position: relative;
-    width: 100%;
-    max-width: 25rem;
     margin: 0 auto;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     transform: translateX(0);
-  }
-
-  .l7-loyalty-tab-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: gap 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
   }
 
   .l7-loyalty-tab-number {
@@ -40,8 +36,8 @@
     font-weight: 500;
     font-size: 1rem;
     transition: font-size 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
-    width: 2rem;
     flex: 0 0 auto;
+    line-height: 1.4;
   }
 
   .l7-loyalty-tab-title {
@@ -60,10 +56,10 @@
     transition: all 300ms cubic-bezier(0.64, 0.04, 0.35, 1);
     color: #607074;
     font-size: 1.125rem;
-    margin-left: 2.5rem;
     pointer-events: none;
     line-height: 1.5;
     padding: 0;
+    margin-top: 0.5rem;
   }
 
   .l7-loyalty-tab.active {
@@ -71,25 +67,22 @@
     border: 0.08rem solid #e8e8e8;
     background: #fff;
     box-shadow: 0 0.1875rem 0.9375rem 0.125rem rgba(0, 0, 0, 0.02);
-    padding: 1.95rem 1.5rem;
+    display: flex;
     width: calc(100% + 3.5rem);
-    max-width: calc(25rem + 3.5rem);
+    max-width: 31.125rem;
+    padding: 1.625rem 1.9375rem 1.375rem 1.9375rem;
+    align-items: baseline;
+    gap: 0.82363rem;
     margin-left: -1.75rem;
     z-index: 1;
     transform: translateX(0);
-  }
-
-  .l7-loyalty-tab.active .l7-loyalty-tab-header {
-    gap: 0.8rem;
   }
 
   .l7-loyalty-tab.active .l7-loyalty-tab-content {
     max-height: 12.5rem;
     opacity: 1;
     transform: translateY(0);
-    margin-top: 0.5rem;
     pointer-events: auto;
-    margin-left: 2.8rem;
   }
 
   .l7-loyalty-tab.active .l7-loyalty-tab-number,
@@ -104,15 +97,15 @@
   /* Tablet Breakpoint */
   @media screen and (max-width: 61.9375rem) {
     .l7-loyalty-tabs {
-      max-width: 25rem;
+      max-width: 28.53313rem;
     }
 
     .l7-loyalty-tab {
-      max-width: 23rem;
+      max-width: 26rem;
     }
 
     .l7-loyalty-tab.active {
-      max-width: calc(23rem + 2.5rem);
+      max-width: 28.53313rem;
     }
   }
 
@@ -125,12 +118,14 @@
 
     .l7-loyalty-tab {
       max-width: 100%;
-      padding: 0.875rem 1.25rem;
+      padding: 0.75rem 1.5rem;
     }
 
     .l7-loyalty-tab.active {
       margin-left: -1.25rem;
       width: calc(100% + 2.5rem);
+      max-width: none;
+      padding: 1.625rem 1.9375rem 1.375rem 1.9375rem;
     }
 
     .l7-loyalty-tab-content {
@@ -162,32 +157,32 @@
 
 <div class="l7-loyalty-tabs">
   <div class="l7-loyalty-tab active" data-tab="1">
-    <div class="l7-loyalty-tab-header">
-      <span class="l7-loyalty-tab-number">01.</span>
+    <span class="l7-loyalty-tab-number">01.</span>
+    <div class="l7-loyalty-tab-title-wrapper">
       <h3 class="l7-loyalty-tab-title">Start with a 1% discount</h3>
-    </div>
-    <div class="l7-loyalty-tab-content">
-      <p>when Onramp is your sole lender (applies on your second loan).</p>
+      <div class="l7-loyalty-tab-content">
+        <p>when Onramp is your sole lender (applies on your second loan).</p>
+      </div>
     </div>
   </div>
 
   <div class="l7-loyalty-tab" data-tab="2">
-    <div class="l7-loyalty-tab-header">
-      <span class="l7-loyalty-tab-number">02.</span>
+    <span class="l7-loyalty-tab-number">02.</span>
+    <div class="l7-loyalty-tab-title-wrapper">
       <h3 class="l7-loyalty-tab-title">Earn an additional 1% discount</h3>
-    </div>
-    <div class="l7-loyalty-tab-content">
-      <p>after completing three loans (including rollovers) with no payment issues.</p>
+      <div class="l7-loyalty-tab-content">
+        <p>after completing three loans (including rollovers) with no payment issues.</p>
+      </div>
     </div>
   </div>
 
   <div class="l7-loyalty-tab" data-tab="3">
-    <div class="l7-loyalty-tab-header">
-      <span class="l7-loyalty-tab-number">03.</span>
+    <span class="l7-loyalty-tab-number">03.</span>
+    <div class="l7-loyalty-tab-title-wrapper">
       <h3 class="l7-loyalty-tab-title">Unlock a final 1% discount</h3>
-    </div>
-    <div class="l7-loyalty-tab-content">
-      <p>by completing six loans (or rollovers) without payment issues.</p>
+      <div class="l7-loyalty-tab-content">
+        <p>by completing six loans (or rollovers) without payment issues.</p>
+      </div>
     </div>
   </div>
 </div>

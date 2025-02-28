@@ -3,7 +3,6 @@ const { watch } = require("fs");
 
 const sourceFile = "loyalty-tabs.html";
 const minifiedFile = "loyalty-tabs.min.html";
-const repoComment = "<!-- repo/dev version of Loyalty Tabs: https://github.com/designxdevelop/loyalty-tabs -->\n";
 
 const minifyOptions = {
   collapseWhitespace: true,
@@ -19,11 +18,21 @@ const minifyOptions = {
   processConditionalComments: true,
 };
 
+async function extractFirstComment(content) {
+  const commentMatch = content.match(/<!--[\s\S]*?-->/);
+  return commentMatch ? commentMatch[0] + "\n" : "";
+}
+
 async function minifyFile() {
   try {
     const content = await Bun.file(sourceFile).text();
+    const firstComment = await extractFirstComment(content);
+
+    // Minify the content
     const minified = minify(content, minifyOptions);
-    await Bun.write(minifiedFile, repoComment + minified);
+
+    // Write the file with the preserved comment
+    await Bun.write(minifiedFile, firstComment + minified);
     console.log(`✨ Minified ${sourceFile} -> ${minifiedFile}`);
   } catch (err) {
     console.error("Error during minification:", err);
