@@ -10,6 +10,7 @@
     position: relative;
     width: 100%;
     padding: 0 1.75rem;
+    min-height: 20.203125rem;
   }
   .l7-loyalty-tab {
     background: #fcfbfc;
@@ -182,9 +183,11 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     let e = document.querySelectorAll(".l7-loyalty-tab");
+
     e.forEach((t) => {
       t.addEventListener("click", function () {
-        e.forEach((t) => t.classList.remove("active")), this.classList.add("active");
+        e.forEach((t) => t.classList.remove("active"));
+        this.classList.add("active");
       });
     });
   });
